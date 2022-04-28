@@ -13,7 +13,7 @@ public class Client {
         BufferedWriter bufferedWriter=null;
 
         try {
-            socket = new Socket("localhost",1234);
+            socket = new Socket("localhost",3333);
 
             inputStreamReader=new InputStreamReader(socket.getInputStream());
             outputStreamWriter=new OutputStreamWriter(socket.getOutputStream());
@@ -28,10 +28,11 @@ public class Client {
 
                 bufferedWriter.write(msgToSend);
                 bufferedWriter.newLine();
+                //flush the buffer so that things  don't pile up
                 bufferedWriter.flush();
 
                 System.out.println("Server: "+ bufferedReader.readLine());
-
+//if you type bye the session ends
                 if(msgToSend.equalsIgnoreCase("Bye"))
                     break;
             }
