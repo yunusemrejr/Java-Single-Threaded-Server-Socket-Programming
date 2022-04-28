@@ -12,7 +12,7 @@ public class Server {
         BufferedWriter bufferedWriter=null;
         ServerSocket serverSocket = null;
 
-        serverSocket= new ServerSocket(1234);
+        serverSocket= new ServerSocket(3333);
 
         while(true){
             try{
@@ -29,6 +29,8 @@ public class Server {
                     System.out.println("Client: "+msgFromClient);
                     bufferedWriter.write("Message Received!");
                     bufferedWriter.newLine();
+                                    //flush the buffer so that things  don't pile up
+
                     bufferedWriter.flush();
 
                     if(msgFromClient.equalsIgnoreCase("bye"))
